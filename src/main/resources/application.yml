@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: myapp
+
+  datasource:
+    url: jdbc:postgresql://localhost:5435/mydatabase
+    username: admin
+    password: admin12
+
+
