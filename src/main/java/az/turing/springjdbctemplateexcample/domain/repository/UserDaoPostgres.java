@@ -1,41 +1,37 @@
 package az.turing.springjdbctemplateexcample.domain.repository;
 
-import az.turing.springjdbctemplateexcample.domain.entity.User;
+import az.turing.springjdbctemplateexcample.domain.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
+import static az.turing.springjdbctemplateexcample.domain.repository.UserQuery.query;
 
 @RequiredArgsConstructor
 @Repository
-public class UserDaoPostgres implements UserPostgresRepository {
+public class UserDaoPostgres implements UserRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public User create(User user) {
-        jdbcTemplate.update(UserQuery.query, user.getName(), user.getEmail(), user.getGroup());
+    public UserEntity save(UserEntity user) {
+        jdbcTemplate.update(query, user.getName(), user.getEmail(), user.getGroup());
         return user;
     }
 
     @Override
-    public List<User> getAll() {
-        String query = "select * from user";
-        return jdbcTemplate.query(query, new UserRowMapper());
+    public List<UserEntity> getAll() {
+        return jdbcTemplate.query(UserQuery.query2, new UserRowMapper());
     }
 
     @Override
-    public User findById(long id) {
-        return null;
+    public UserEntity findById(long id) {
+        return jdbcTemplate.queryForObject(UserQuery.query3,new UserRowMapper());
     }
 
     @Override
     public void delete(long id) {
-
+        jdbcTemplate.update(UserQuery.query4,id);
     }
 
 

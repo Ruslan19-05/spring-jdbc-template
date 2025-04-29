@@ -1,20 +1,17 @@
 package az.turing.springjdbctemplateexcample;
 
-import az.turing.springjdbctemplateexcample.domain.entity.User;
-import az.turing.springjdbctemplateexcample.domain.repository.UserPostgresRepository;
+import az.turing.springjdbctemplateexcample.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @RequiredArgsConstructor
 
 public class SpringJdbctemplateExcampleApplication implements CommandLineRunner {
 
-    private final UserPostgresRepository repository;
+    private final UserRepository repository;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringJdbctemplateExcampleApplication.class, args);

@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class UserEntity {
 
     private Long id;
     private  String name;
     private String email;
     private String group;
 
-    public User(String name, String email, String group) {
+    public UserEntity(String name, String email, String group) {
         this.name = name;
         this.email = email;
         this.group = group;
